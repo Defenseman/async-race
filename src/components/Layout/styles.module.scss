@@ -1,0 +1,22 @@
+.container {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+    align-items: center;
+}
+
+.buttonsBlock {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.logo {
+    img {
+        height: 300px;
+        width: 750px;
+    }
+}
+
+a {
+  text-decoration: none;
+}

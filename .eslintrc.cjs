@@ -20,9 +20,12 @@ module.exports = {
     'max-lines-per-function': ['error', 40],
     'no-magic-numbers': [
       'error',
-      { ignoreArrayIndexes: true, ignore: [0, 1], enforceConst: true },
+      { ignoreArrayIndexes: true, ignore: [0, 1, 40], enforceConst: true },
     ],
     'import/extensions': ['error', 'never'],
+    'import/prefer-default-export': 'off',
+    'react/require-default-props': 'off',
+    'react/button-has-type': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],

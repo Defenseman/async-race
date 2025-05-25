@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Khula&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-image: url('./assets/brickWall.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+:root {
+  font-family: 'Khula', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
