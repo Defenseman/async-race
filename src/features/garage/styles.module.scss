@@ -1,0 +1,9 @@
+.container {
+    position: relative;
+}
+
+.mainControlsBlock {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    margin-bottom: 30px;
+}

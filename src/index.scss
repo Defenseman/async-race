@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Khula&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,7 +9,7 @@ html {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  background-attachment: fixed;
 }
 
 :root {

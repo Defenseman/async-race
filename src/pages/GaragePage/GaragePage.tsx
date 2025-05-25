@@ -1,9 +1,10 @@
 import React from 'react';
+import { Garage } from '../../features/garage/Garage';
 
 export function GaragePage() {
   return (
     <div>
-      <h1>Garage Page</h1>
+      <Garage />
     </div>
   );
 }

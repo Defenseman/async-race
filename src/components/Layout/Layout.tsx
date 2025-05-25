@@ -10,10 +10,10 @@ export function Layout() {
       <header className={styles.container}>
         <nav className={styles.buttonsBlock}>
           <Link to="/">
-            <Button>Garage</Button>
+            <Button width="100%">Garage</Button>
           </Link>
           <Link to="/winners">
-            <Button>Winners</Button>
+            <Button width="100%">Winners</Button>
           </Link>
         </nav>
         <div className={styles.logo}>

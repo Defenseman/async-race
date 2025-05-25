@@ -6,11 +6,12 @@ type ButtonProps = {
   icon?: ReactNode;
   children?: ReactNode;
   type?: 'button' | 'submit' | 'reset';
+  width?: string;
 };
 
-export function Button({ onCLick, children, icon, type }: ButtonProps) {
+export function Button({ onCLick, children, icon, type, width }: ButtonProps) {
   return (
-    <button className={styles.button}>
+    <button className={styles.button} style={{ width }}>
       {children}
       {icon}
     </button>
