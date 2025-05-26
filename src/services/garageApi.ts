@@ -13,3 +13,27 @@ export const getCarsFromServer = async () => {
     throw new Error(error);
   }
 };
+
+type ItemProps = {
+  name: string;
+  color: string;
+};
+
+export const createCar = async (carData: ItemProps) => {
+  try {
+    const response = await agent.post('/garage', carData);
+    console.log('Это createCar', response.data);
+    return await response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const deleteCar = async (carId: number) => {
+  try {
+    const response = await agent.delete(`/garage/${carId}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
