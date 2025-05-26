@@ -4,10 +4,10 @@
 }
 
 .carIcon {
-    
+    transition: transform 2s linear;
+    z-index: 3;
 }
 
-.carName {
-    font-size: 50px;
-    font-weight: 700;
+.drive {
+    transform: translateX(960px);
 }

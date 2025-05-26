@@ -1,6 +1,6 @@
 import React from 'react';
 import { CarButtons } from '../CarButtons/CarButtons';
-import { Car } from '../../../../../components/car/Car';
+import { Car } from '../../../../components/Car/Car';
 import { Track } from '../Track/Track';
 import styles from './styles.module.scss';
 

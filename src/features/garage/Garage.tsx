@@ -1,32 +1,12 @@
 import React from 'react';
-import { GarageControls } from './components/GarageControls/GarageControls/GarageControls';
-import { RaceControls } from './components/GarageControls/RaceControls/RaceControls';
-import { CarList } from './components/GarageControls/CarList/CarList';
+import { GarageControls } from './components/GarageControls/GarageControls';
+import { RaceControls } from './components/RaceControls/RaceControls';
+import { CarList } from './components/CarList/CarList';
 import styles from './styles.module.scss';
 import { StartFinishLine } from './components/StartFinishLine/StartFinishLine';
+import { getCarsFromServer } from '../../services/garageApi';
 
-const cars = [
-  {
-    name: 'Tesla',
-    color: '#e6e6fa',
-    id: 1,
-  },
-  {
-    name: 'BMW',
-    color: '#fede00',
-    id: 2,
-  },
-  {
-    name: 'Mersedes',
-    color: '#6c779f',
-    id: 3,
-  },
-  {
-    name: 'Ford',
-    color: '#ef3c40',
-    id: 4,
-  },
-];
+const cars = await getCarsFromServer();
 
 export function Garage() {
   return (
@@ -35,8 +15,10 @@ export function Garage() {
         <RaceControls />
         <GarageControls />
       </div>
-      <StartFinishLine />
-      <CarList cars={cars} />
+      <div className={styles.carRaceBlock}>
+        <StartFinishLine />
+        <CarList cars={cars} />
+      </div>
     </div>
   );
 }

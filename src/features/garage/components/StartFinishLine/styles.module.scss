@@ -1,18 +1,19 @@
 .startLine {
     position: absolute;
     left: 260px;
-    top: 72px;
-    height: 81%;
+    top: 0;
+    height: 100%;
     width: 15px;
-    z-index: 555;
+    z-index: 2;
     background-color: white;
 }
 .finishLine {
     position: absolute;
-    right: 0;
-    top: 72px;
-    height: 81%;
+    right: 110px;
+    top: 0;
+    height: 100%;
     width: 15px;
-    background-color: white;
-    z-index: 555;
+    background-color: black;
+    background-image: repeating-linear-gradient(to top, white 2px, white 11px, transparent 10px, transparent 20px);
+    z-index: 2;
 }
