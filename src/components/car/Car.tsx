@@ -6,7 +6,7 @@ type CarProps = {
 };
 
 export function Car({ color }: CarProps) {
-  const drive = true;
+  const drive = false;
   return (
     <div className={styles.container}>
       <svg

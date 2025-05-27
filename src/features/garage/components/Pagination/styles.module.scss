@@ -1,0 +1,28 @@
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10px;
+}
+.carsCount {
+  text-transform: uppercase;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.pageNumber {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 6px;
+
+  & span {
+    color: #3b5eec;
+    font-weight: 900;
+  }
+}

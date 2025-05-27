@@ -1,3 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import garageReducer from '../features/garage/garageSlice';
 
-export const rootRedicer = combineReducers({});
+export const rootReducer = combineReducers({
+  garage: garageReducer,
+});

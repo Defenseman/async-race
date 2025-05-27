@@ -5,13 +5,23 @@ type ButtonProps = {
   onClick?: () => void;
   icon?: ReactNode;
   children?: ReactNode;
-  type?: 'button' | 'submit' | 'reset';
   width?: string;
+  disabled?: boolean;
 };
 
-export function Button({ onClick, children, icon, type, width }: ButtonProps) {
+export function Button({
+  onClick,
+  children,
+  icon,
+  width,
+  disabled,
+}: ButtonProps) {
   return (
-    <button className={styles.button} style={{ width }} onClick={onClick}>
+    <button
+      className={`${styles.button} ${disabled && styles.disabled}`}
+      style={{ width }}
+      onClick={onClick}
+    >
       {children}
       {icon}
     </button>

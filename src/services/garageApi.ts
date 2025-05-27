@@ -7,7 +7,6 @@ const agent = axios.create({ baseURL: BASE_URL });
 export const getCarsFromServer = async () => {
   try {
     const response = await agent('/garage');
-    console.log('Это cars от сервера', response.data);
     return response.data;
   } catch (error) {
     throw new Error(error);
@@ -22,7 +21,6 @@ type ItemProps = {
 export const createCar = async (carData: ItemProps) => {
   try {
     const response = await agent.post('/garage', carData);
-    console.log('Это createCar', response.data);
     return await response.data;
   } catch (error) {
     throw new Error(error);
