@@ -9,7 +9,10 @@ export const getCarsFromServer = async () => {
     const response = await agent('/garage');
     return response.data;
   } catch (error) {
-    throw new Error(error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Unknown error occurred while geting a cars');
   }
 };
 
@@ -23,15 +26,21 @@ export const createCar = async (carData: ItemProps) => {
     const response = await agent.post('/garage', carData);
     return await response.data;
   } catch (error) {
-    throw new Error(error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Unknown error occurred while creating a car');
   }
 };
 
-export const deleteCar = async (carId: number) => {
+export const deleteCarFromServer = async (carId: number) => {
   try {
     const response = await agent.delete(`/garage/${carId}`);
     return response.data;
   } catch (error) {
-    throw new Error(error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Unknown error occurred while deleting a car');
   }
 };

@@ -3,25 +3,13 @@ import { useDispatch } from 'react-redux';
 import { Button } from '../../../../components/Button/Button';
 import styles from './styles.module.scss';
 import { addCars, setPage } from '../../garageSlice';
+import { generateManyCars } from '../../operations';
+import { AppDispatch } from '../../../../app/store';
 
 export function GarageControls() {
-  const dispatch = useDispatch();
-  const CARS_TO_GENERATE = 1000;
-  const HEX_COLOR_MAX = 16777215;
-  const HEX_RADIX = 16;
-
-  const generateRandomCars = () => {
-    const name = `Car # ${Math.floor(Math.random() * CARS_TO_GENERATE)}`;
-    const color = `
-      #${Math.floor(Math.random() * HEX_COLOR_MAX).toString(HEX_RADIX)}
-      `;
-    const id = Date.now() + Math.random();
-    return { id, name, color };
-  };
-
-  const handleGenerateCars = () => {
-    const newCars = Array.from({ length: 100 }, generateRandomCars);
-    dispatch(addCars(newCars));
+  const dispatch = useDispatch<AppDispatch>();
+  const handleGenerateCars = async () => {
+    dispatch(generateManyCars());
     dispatch(setPage(1));
   };
 
