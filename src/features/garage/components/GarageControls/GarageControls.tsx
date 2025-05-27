@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../components/Button/Button';
@@ -7,9 +6,15 @@ import { addCars, setPage } from '../../garageSlice';
 
 export function GarageControls() {
   const dispatch = useDispatch();
+  const CARS_TO_GENERATE = 1000;
+  const HEX_COLOR_MAX = 16777215;
+  const HEX_RADIX = 16;
+
   const generateRandomCars = () => {
-    const name = `Car # ${Math.floor(Math.random() * 1000)}`;
-    const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    const name = `Car # ${Math.floor(Math.random() * CARS_TO_GENERATE)}`;
+    const color = `
+      #${Math.floor(Math.random() * HEX_COLOR_MAX).toString(HEX_RADIX)}
+      `;
     const id = Date.now() + Math.random();
     return { id, name, color };
   };
