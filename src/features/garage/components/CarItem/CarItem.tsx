@@ -3,19 +3,20 @@ import { CarButtons } from '../CarButtons/CarButtons';
 import { Car } from '../../../../components/Car/Car';
 import { Track } from '../Track/Track';
 import styles from './styles.module.scss';
+import { Item } from '../../types';
 
-type CarProps = {
-  name: string;
-  color: string;
-  id: number;
-};
-
-export function CarItem({ name, color, id }: CarProps) {
+export function CarItem({
+  car,
+  handleSelectedCar,
+}: {
+  car: Item;
+  handleSelectedCar: (carData: Item) => void;
+}) {
   return (
     <div className={styles.container}>
-      <CarButtons carId={id} />
-      <Car color={color} />
-      <Track name={name} />
+      <CarButtons carData={car} handleSelectedCar={handleSelectedCar} />
+      <Car color={car.color} />
+      <Track name={car.name} />
     </div>
   );
 }

@@ -3,6 +3,7 @@ export type Item = {
   color: string;
   id: number;
 };
+export type CreateCarData = Omit<Item, 'id'>;
 
 export type GarageState = {
   items: Item[];

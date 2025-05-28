@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.inputText {
+    height: 100%;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    color: black;
+    font-size: 16px;
+}
+
+.inputColor {
+    height: 80%;
+    width: 30px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 0;
+    background-color: transparent;
+}

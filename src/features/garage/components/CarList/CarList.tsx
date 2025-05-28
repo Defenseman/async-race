@@ -8,13 +8,14 @@ type CarListItem = {
 };
 type CarListProps = {
   cars: CarListItem[];
+  handleSelectedCar: (car: CarListItem) => void;
 };
 
-export function CarList({ cars }: CarListProps) {
+export function CarList({ cars, handleSelectedCar }: CarListProps) {
   return (
     <div>
       {cars.map(car => (
-        <CarItem key={car.id} name={car.name} color={car.color} id={car.id} />
+        <CarItem key={car.id} car={car} handleSelectedCar={handleSelectedCar} />
       ))}
     </div>
   );

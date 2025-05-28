@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { deleteCar, generateManyCars, getCars } from './operations';
+import {
+  createCar,
+  deleteCar,
+  generateManyCars,
+  getCars,
+  updateCar,
+} from './operations';
 import { GarageState } from './types';
 
 const initialState: GarageState = {
@@ -39,8 +45,18 @@ const garageSlice = createSlice({
         state.items = [...state.items, ...action.payload];
       })
 
+      .addCase(createCar.fulfilled, (state, action) => {
+        state.items = [...state.items, action.payload];
+      })
+
       .addCase(deleteCar.fulfilled, (state, action) => {
         state.items = state.items.filter(car => car.id !== action.payload);
+      })
+
+      .addCase(updateCar.fulfilled, (state, action) => {
+        state.items = state.items.map(car =>
+          car.id === action.payload.id ? action.payload : car,
+        );
       });
   },
 });
