@@ -9,7 +9,7 @@
     column-gap: 5px;
 }
 
-.inputText {
+.inputText, .disabledInput {
     height: 100%;
     border-radius: 5px;
     background-color: white;
@@ -18,11 +18,21 @@
     font-size: 16px;
 }
 
-.inputColor {
+.inputColor, .disabledColorInput {
     height: 80%;
     width: 30px;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
     padding: 0;
     background-color: transparent;
+}
+
+.disabledInput {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.disabledColorInput {
+    pointer-events: none;
+    opacity: 0.6;
 }

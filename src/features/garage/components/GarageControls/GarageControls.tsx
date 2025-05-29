@@ -43,15 +43,21 @@ export function GarageControls({
           name="name"
           value={selectedCar?.name || ''}
           onChange={handleInputChange}
-          className={styles.inputText}
+          className={`
+            ${selectedCar ? styles.inputText : styles.disabledInput}
+            `}
           type="text"
         />
-        <Button onClick={() => handleUpdateCar()}>Update</Button>
+        <Button disabled={!selectedCar} onClick={() => handleUpdateCar()}>
+          Update
+        </Button>
         <input
           name="color"
           value={selectedCar?.color || '#000000'}
           onChange={handleInputChange}
-          className={styles.inputColor}
+          className={`
+            ${selectedCar ? styles.inputColor : styles.disabledColorInput}
+          `}
           type="color"
         />
       </div>

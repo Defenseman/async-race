@@ -1,5 +1,5 @@
 import React from 'react';
-import { CarItem } from '../CarItem/CarItem';
+import { CarItem } from './CarItem/CarItem';
 
 type CarListItem = {
   name: string;

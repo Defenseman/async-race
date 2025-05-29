@@ -1,9 +1,5 @@
-import axios from 'axios';
 import { CreateCarData } from '../features/garage/types';
-
-const BASE_URL = 'http://127.0.0.1:3000';
-
-const agent = axios.create({ baseURL: BASE_URL });
+import { agent } from './apiConstans';
 
 export const getCarsFromServer = async () => {
   try {

@@ -17,3 +17,10 @@
     text-align: start;
 }
 
+.botomLine:last-child {
+    position: absolute;
+    height: 6px;
+    width: 100%;
+    top: 84.5px;
+    background-color: white;
+}
