@@ -1,21 +1,20 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import styles from './styles.module.scss';
 
 type ButtonProps = {
-  onClick?: () => void;
-  icon?: ReactNode;
-  children?: ReactNode;
+  onClick: () => void;
+  icon?: React.ReactNode;
   width?: string;
   disabled?: boolean;
 };
 
 export function Button({
   onClick,
+  icon = undefined,
+  width = 'auto',
+  disabled = false,
   children,
-  icon,
-  width,
-  disabled,
-}: ButtonProps) {
+}: PropsWithChildren<ButtonProps>) {
   return (
     <button
       className={`${styles.button} ${disabled && styles.disabled}`}

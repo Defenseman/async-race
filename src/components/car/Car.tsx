@@ -3,14 +3,20 @@ import styles from './styles.module.scss';
 
 type CarProps = {
   color: string;
+  shouldDrive: boolean;
+  duration: number;
+  translateCar: number;
 };
 
-export function Car({ color }: CarProps) {
-  const drive = false;
+export function Car({ color, shouldDrive, duration, translateCar }: CarProps) {
   return (
     <div className={styles.container}>
       <svg
-        className={`${styles.carIcon} ${drive ? styles.drive : ''}`}
+        className={styles.carIcon}
+        style={{
+          transform: shouldDrive ? `translateX(${translateCar}px)` : '',
+          transition: shouldDrive ? `transform ${duration}s linear` : '',
+        }}
         width="120"
         height="50"
         viewBox="0 0 120 50"

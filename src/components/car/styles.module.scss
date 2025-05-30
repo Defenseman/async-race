@@ -1,13 +1,11 @@
 .container {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .carIcon {
+    position: absolute;
     transition: transform 2s linear;
     z-index: 3;
-}
-
-.drive {
-    transform: translateX(960px);
 }
