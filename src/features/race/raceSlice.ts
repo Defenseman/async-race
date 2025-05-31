@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RaceState } from './types';
-import { startCar, stopCar } from './operations';
+import { startCar, stopCar, driveCar } from './operations';
 
 const initialState: RaceState = {
-  runningCars: {},
+  runningCar: {},
   animationParams: {},
 };
 
@@ -14,15 +14,20 @@ const raceSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(startCar.pending, (state, action) => {
-        state.runningCars[action.meta.arg] = true;
+        state.runningCar[action.meta.arg] = true;
       })
       .addCase(startCar.fulfilled, (state, action) => {
         const { id, velocity, distance } = action.payload;
-        state.runningCars[action.meta.arg] = false;
         state.animationParams[id] = { velocity, distance };
       })
+
+      .addCase(driveCar.rejected, (state, action) => {
+        const { id } = action.payload as { id: number };
+        state.runningCar[id] = false;
+      })
+
       .addCase(stopCar.fulfilled, (state, action) => {
-        delete state.runningCars[action.payload];
+        delete state.runningCar[action.payload];
       });
   },
 });

@@ -1,4 +1,4 @@
 export type RaceState = {
-  runningCars: Record<number, boolean>;
+  runningCar: Record<number, boolean>;
   animationParams: Record<number, { velocity: number; distance: number }>;
 };

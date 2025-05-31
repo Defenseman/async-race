@@ -14,8 +14,10 @@ export function Car({ color, shouldDrive, duration, translateCar }: CarProps) {
       <svg
         className={styles.carIcon}
         style={{
-          transform: shouldDrive ? `translateX(${translateCar}px)` : '',
-          transition: shouldDrive ? `transform ${duration}s linear` : '',
+          transform: `translateX(${translateCar}px)`,
+          transition: shouldDrive
+            ? `transform ${duration}s linear`
+            : 'transform 0.3s ease-out',
         }}
         width="120"
         height="50"

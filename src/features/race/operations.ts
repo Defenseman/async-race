@@ -5,8 +5,19 @@ export const startCar = createAsyncThunk(
   '/race/startcar',
   async (id: number) => {
     const response = await startEngine(id);
-    await drive(id);
     return { id, ...response };
+  },
+);
+
+export const driveCar = createAsyncThunk(
+  '/race/driveCar',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      await drive(id);
+      return id;
+    } catch (error) {
+      return rejectWithValue({ id, error });
+    }
   },
 );
 
