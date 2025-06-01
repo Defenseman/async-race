@@ -2,19 +2,21 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../../../components/Button/Button';
 import styles from './styles.module.scss';
-import { driveCar, startCar, stopCar } from '../../../../../race/operations';
+import { driveCar, startCar } from '../../../../../race/operations';
 import { AppDispatch } from '../../../../../../app/store';
 
 type CarDriveModeProps = {
   carId: number;
   disabledStart: boolean;
   disabledStop: boolean;
+  handleStopCar: () => void;
 };
 
 export function CarDriveMode({
   carId,
   disabledStart,
   disabledStop,
+  handleStopCar,
 }: CarDriveModeProps) {
   const dispatch = useDispatch<AppDispatch>();
   return (
@@ -27,7 +29,7 @@ export function CarDriveMode({
       >
         A
       </Button>
-      <Button disabled={disabledStop} onClick={() => dispatch(stopCar(carId))}>
+      <Button disabled={disabledStop} onClick={handleStopCar}>
         B
       </Button>
     </div>

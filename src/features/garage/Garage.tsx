@@ -32,7 +32,7 @@ export function Garage() {
     <>
       <div className={styles.container}>
         <div className={styles.mainControlsBlock}>
-          <RaceControls />
+          <RaceControls cars={visibleCars} />
           <GarageControls
             selectedCar={selectedCar}
             setSelectedCar={setSelectedCar}

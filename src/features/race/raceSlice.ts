@@ -28,6 +28,7 @@ const raceSlice = createSlice({
 
       .addCase(stopCar.fulfilled, (state, action) => {
         delete state.runningCar[action.payload];
+        delete state.animationParams[action.payload];
       });
   },
 });

@@ -1,14 +1,15 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable no-magic-numbers */
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CarButtons } from './CarButtons/CarButtons';
 import { Car } from '../../../../../components/Car/Car';
 import { Track } from './Track/Track';
 import styles from './styles.module.scss';
 import { Item } from '../../../types';
 import { CarDriveMode } from './CarDriveMode/CarDriveMode';
-import { RootState } from '../../../../../app/store';
+import { AppDispatch, RootState } from '../../../../../app/store';
+import { stopCar } from '../../../../race/operations';
 
 export function CarItem({
   car,
@@ -19,6 +20,7 @@ export function CarItem({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationStartRef = useRef<number | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
   const [disabledStart, setdisabledStart] = useState(false);
   const [disabledStop, setdisabledStop] = useState(true);
 
@@ -32,9 +34,17 @@ export function CarItem({
   );
 
   const duration =
-    // eslint-disable-next-line no-magic-numbers
     animationData &&
     (animationData.distance / animationData.velocity / 1000) * 1.4;
+
+  const handleStopCar = () => {
+    dispatch(stopCar(car.id));
+    setTranslateCar(0);
+    setdisabledStart(false);
+    setdisabledStop(true);
+    setStartAnimation(false);
+    animationStartRef.current = null;
+  };
 
   useEffect(() => {
     if (!animationData) return;
@@ -73,6 +83,7 @@ export function CarItem({
     <div className={styles.container} ref={containerRef}>
       <CarButtons carData={car} handleSelectedCar={handleSelectedCar} />
       <CarDriveMode
+        handleStopCar={handleStopCar}
         disabledStop={disabledStop}
         disabledStart={disabledStart}
         carId={car.id}
