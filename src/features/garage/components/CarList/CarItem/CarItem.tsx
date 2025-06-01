@@ -10,6 +10,7 @@ import { Item } from '../../../types';
 import { CarDriveMode } from './CarDriveMode/CarDriveMode';
 import { AppDispatch, RootState } from '../../../../../app/store';
 import { stopCar } from '../../../../race/operations';
+import { clearResetFlag } from '../../../../race/raceSlice';
 
 export function CarItem({
   car,
@@ -21,16 +22,21 @@ export function CarItem({
   const containerRef = useRef<HTMLDivElement>(null);
   const animationStartRef = useRef<number | null>(null);
   const dispatch = useDispatch<AppDispatch>();
+
   const [disabledStart, setdisabledStart] = useState(false);
   const [disabledStop, setdisabledStop] = useState(true);
-
   const [translateCar, setTranslateCar] = useState(0);
   const [startAnimation, setStartAnimation] = useState(false);
+
   const isRunning = useSelector(
     (state: RootState) => state.race.runningCar[car.id],
   );
   const animationData = useSelector(
     (state: RootState) => state.race.animationParams[car.id],
+  );
+
+  const shouldReset = useSelector(
+    (state: RootState) => state.race.shouldReset[car.id],
   );
 
   const duration =
@@ -78,6 +84,18 @@ export function CarItem({
       setTranslateCar(distanceTravelled);
     }
   }, [isRunning]);
+
+  useEffect(() => {
+    if (shouldReset) {
+      setTranslateCar(0);
+      setStartAnimation(false);
+      setdisabledStart(false);
+      setdisabledStop(true);
+      animationStartRef.current = null;
+
+      dispatch(clearResetFlag(car.id));
+    }
+  }, [shouldReset]);
 
   return (
     <div className={styles.container} ref={containerRef}>

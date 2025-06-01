@@ -1,16 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RaceState } from './types';
 import { startCar, stopCar, driveCar } from './operations';
 
 const initialState: RaceState = {
   runningCar: {},
   animationParams: {},
+  shouldReset: {},
 };
 
 const raceSlice = createSlice({
   name: 'race',
   initialState,
-  reducers: {},
+  reducers: {
+    resetCarPosition: (state, action: PayloadAction<number>) => {
+      state.shouldReset[action.payload] = true;
+    },
+    clearResetFlag: (state, action: PayloadAction<number>) => {
+      delete state.shouldReset[action.payload];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(startCar.pending, (state, action) => {
@@ -33,4 +41,5 @@ const raceSlice = createSlice({
   },
 });
 
+export const { resetCarPosition, clearResetFlag } = raceSlice.actions;
 export default raceSlice.reducer;

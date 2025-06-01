@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 import { CarItem } from '../CarList/CarItem/CarItem';
 import { driveCar, startCar, stopCar } from '../../../race/operations';
 import { AppDispatch } from '../../../../app/store';
+import { resetCarPosition } from '../../../race/raceSlice';
 
 type CarItem = {
   name: string;
@@ -19,11 +20,14 @@ type RaceControlsProps = {
 
 export function RaceControls({ cars }: RaceControlsProps) {
   const dispatch = useDispatch<AppDispatch>();
+
   const toRound = 1000;
-  const [disabledRace, setdisabledRace] = useState(false);
-  const [disabledReset, setdisabledReset] = useState(false);
+  const [disabledRace, setDisabledRace] = useState(false);
+  const [disabledReset, setDisabledReset] = useState(true);
 
   const handleRace = async () => {
+    setDisabledRace(true);
+    setDisabledReset(false);
     const startTimes: Record<number, number> = {};
     const raceResults: { id: number; time: number }[] = [];
 
@@ -42,25 +46,24 @@ export function RaceControls({ cars }: RaceControlsProps) {
         }
       }),
     );
-    if (raceResults.length) {
-      const winner = raceResults.reduce((acc, curr) =>
-        acc.time < curr.time ? acc : curr,
-      );
-    }
+
+    setDisabledRace(false);
+    setDisabledReset(false);
   };
 
   const handleReset = () => {
     cars.forEach(car => {
       dispatch(stopCar(car.id));
+      dispatch(resetCarPosition(car.id));
     });
   };
 
   return (
     <div className={styles.container}>
-      <Button onClick={handleRace} width="90px">
+      <Button disabled={!!disabledRace} onClick={handleRace} width="90px">
         Race
       </Button>
-      <Button onClick={handleReset} width="90px">
+      <Button disabled={!!disabledReset} onClick={handleReset} width="90px">
         Reset
       </Button>
     </div>
