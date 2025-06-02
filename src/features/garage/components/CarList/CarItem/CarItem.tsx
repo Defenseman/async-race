@@ -41,7 +41,7 @@ export function CarItem({
 
   const duration =
     animationData &&
-    (animationData.distance / animationData.velocity / 1000) * 1.4;
+    (animationData.distance / animationData.velocity / 1000) * 1.3;
 
   const handleStopCar = () => {
     dispatch(stopCar(car.id));
@@ -77,11 +77,17 @@ export function CarItem({
   useEffect(() => {
     if (!isRunning && animationData && animationStartRef.current) {
       const elapsed =
-        ((performance.now() - animationStartRef.current) / 1000) * 1.4;
+        ((performance.now() - animationStartRef.current) / 1000) * 1.3;
       const distanceTravelled = animationData.velocity * elapsed;
 
+      const containerWidth = containerRef.current?.offsetWidth || 0;
+      const carWidth = 120;
+      const padding = 140;
+      const maxDistance = containerWidth - carWidth - padding;
+      const realTranslateCar = Math.min(animationData.distance, maxDistance);
+
       setStartAnimation(false);
-      setTranslateCar(distanceTravelled);
+      setTranslateCar(Math.min(distanceTravelled, realTranslateCar));
     }
   }, [isRunning]);
 
