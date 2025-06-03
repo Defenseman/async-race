@@ -1,4 +1,4 @@
-import { CreateCarData } from '../features/garage/types';
+import { CreateCarData } from '../pages/GaragePage/garage/types';
 import { agent } from './apiConstans';
 
 export const getCarsFromServer = async () => {

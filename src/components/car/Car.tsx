@@ -3,12 +3,17 @@ import styles from './styles.module.scss';
 
 type CarProps = {
   color: string;
-  shouldDrive: boolean;
-  duration: number;
-  translateCar: number;
+  shouldDrive?: boolean;
+  duration?: number;
+  translateCar?: number;
 };
 
-export function Car({ color, shouldDrive, duration, translateCar }: CarProps) {
+export function Car({
+  color,
+  shouldDrive = false,
+  duration = 0,
+  translateCar = 0,
+}: CarProps) {
   return (
     <div className={styles.container}>
       <svg
@@ -16,7 +21,7 @@ export function Car({ color, shouldDrive, duration, translateCar }: CarProps) {
         style={{
           transform: `translateX(${translateCar}px)`,
           transition: shouldDrive
-            ? `transform ${duration}s linear`
+            ? `transform ${duration}s ease-in`
             : 'transform 0.3s ease-out',
         }}
         width="120"

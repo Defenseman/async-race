@@ -1,5 +1,5 @@
 import React from 'react';
-import { Garage } from '../../features/garage/Garage';
+import { Garage } from './garage/Garage';
 
 export function GaragePage() {
   return (
