@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../../../store/store';
 import { useCarForm } from '../useCarForm';
-import { createCar } from '../../../operations';
+import { createCar } from '../../../../../../store/garage/operations';
 import { Button } from '../../../../../../components/Button/Button';
 import styles from './styles.module.scss';
 

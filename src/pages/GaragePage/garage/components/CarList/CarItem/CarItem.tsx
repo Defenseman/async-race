@@ -1,23 +1,24 @@
 /* eslint-disable max-lines-per-function */
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CarButtons } from './CarButtons/CarButtons';
 import { Car } from '../../../../../../components/Car/Car';
 import { Track } from './Track/Track';
 import styles from './styles.module.scss';
-import { Item } from '../../../types';
+import { Item } from '../../../../../../store/garage/types';
 import { CarDriveMode } from './CarDriveMode/CarDriveMode';
 import { AppDispatch, RootState } from '../../../../../../store/store';
-import { stopCar } from '../../../../race/operations';
-import { clearResetFlag } from '../../../../race/raceSlice';
+import { stopCar } from '../../../../../../store/race/operations';
+import { useCarStartEffect } from '../../hooks/useCarStartEffect';
+import { useCarStopEffect } from '../../hooks/useCarStopEffect';
+import { useCarResetEffect } from '../../hooks/useCarResetEffect';
 
-export function CarItem({
-  car,
-  handleSelectedCar,
-}: {
+type CarItemProps = {
   car: Item;
   handleSelectedCar: (carData: Item) => void;
-}) {
+};
+
+export function CarItem({ car, handleSelectedCar }: CarItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationStartRef = useRef<number | null>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -26,20 +27,16 @@ export function CarItem({
   const [disabledStop, setdisabledStop] = useState(true);
   const [translateCar, setTranslateCar] = useState(0);
   const [startAnimation, setStartAnimation] = useState(false);
-
   const toRound = 1000;
-
   const isRunning = useSelector(
     (state: RootState) => state.race.runningCar[car.id],
   );
   const animationData = useSelector(
     (state: RootState) => state.race.animationParams[car.id],
   );
-
   const shouldReset = useSelector(
     (state: RootState) => state.race.shouldReset[car.id],
   );
-
   const duration =
     animationData && animationData.distance / animationData.velocity / toRound;
 
@@ -52,55 +49,34 @@ export function CarItem({
     animationStartRef.current = null;
   };
 
-  useEffect(() => {
-    if (!animationData) return;
+  useCarStartEffect({
+    animationData,
+    containerRef,
+    animationStartRef,
+    setdisabledStart,
+    setdisabledStop,
+    setTranslateCar,
+    setStartAnimation,
+  });
 
-    setStartAnimation(false);
-    setTranslateCar(0);
+  useCarStopEffect({
+    animationData,
+    isRunning,
+    animationStartRef,
+    containerRef,
+    setStartAnimation,
+    setTranslateCar,
+  });
 
-    requestAnimationFrame(() => {
-      const { distance } = animationData;
-      const containerWidth = containerRef.current?.offsetWidth || 0;
-      const carWidth = 120;
-      const padding = 140;
-      const maxDistance = containerWidth - carWidth - padding;
-      const realTranslateCar = Math.min(distance, maxDistance);
-
-      animationStartRef.current = performance.now();
-      setdisabledStart(true);
-      setdisabledStop(false);
-      setTranslateCar(realTranslateCar);
-      setStartAnimation(true);
-    });
-  }, [animationData]);
-
-  useEffect(() => {
-    if (!isRunning && animationData && animationStartRef.current) {
-      const elapsed = (performance.now() - animationStartRef.current) / toRound;
-      const distanceTravelled = animationData.velocity * elapsed;
-
-      const containerWidth = containerRef.current?.offsetWidth || 0;
-      const carWidth = 120;
-      const padding = 140;
-      const maxDistance = containerWidth - carWidth - padding;
-      const realTranslateCar = Math.min(animationData.distance, maxDistance);
-
-      setStartAnimation(false);
-      setTranslateCar(Math.min(distanceTravelled, realTranslateCar));
-    }
-  }, [isRunning]);
-
-  useEffect(() => {
-    if (shouldReset) {
-      setTranslateCar(0);
-      setStartAnimation(false);
-      setdisabledStart(false);
-      setdisabledStop(true);
-      animationStartRef.current = null;
-
-      dispatch(clearResetFlag(car.id));
-    }
-  }, [shouldReset]);
+  useCarResetEffect({
+    carId: car.id,
+    shouldReset,
+    setTranslateCar,
+    setStartAnimation,
+    setdisabledStart,
+    setdisabledStop,
+    animationStartRef,
+  });
 
   return (
     <div className={styles.container} ref={containerRef}>

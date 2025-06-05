@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Button } from '../../../../../../../components/Button/Button';
 import styles from './styles.module.scss';
 import { AppDispatch } from '../../../../../../../store/store';
-import { deleteCar } from '../../../../operations';
-import { Item } from '../../../../types';
+import { deleteCar } from '../../../../../../../store/garage/operations';
+import { Item } from '../../../../../../../store/garage/types';
 
 export function CarButtons({
   carData,

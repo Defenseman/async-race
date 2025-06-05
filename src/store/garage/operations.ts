@@ -4,8 +4,8 @@ import {
   deleteCarFromServer,
   getCarsFromServer,
   updateCarOnServer,
-} from '../../../services/garageApi';
-import { generateRandomCar } from '../../../utils/generateRandomCar';
+} from '../../services/garageApi';
+import { generateRandomCar } from '../../utils/generateRandomCar';
 import { CreateCarData, Item } from './types';
 
 export const getCars = createAsyncThunk('/garage/getCars', async () => {

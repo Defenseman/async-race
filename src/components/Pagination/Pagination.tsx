@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from '../Button/Button';
 import { AppDispatch } from '../../store/store';
 import styles from './styles.module.scss';
-import { setPage } from '../../pages/GaragePage/garage/garageSlice';
+import { setPage } from '../../store/garage/garageSlice';
 
 type PagintionProps = {
   currentPage: number;

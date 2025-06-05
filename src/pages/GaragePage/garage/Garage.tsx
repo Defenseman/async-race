@@ -6,11 +6,11 @@ import { RaceControls } from './components/RaceControls/RaceControls';
 import { CarList } from './components/CarList/CarList';
 import styles from './styles.module.scss';
 import { StartFinishLine } from './components/StartFinishLine/StartFinishLine';
-import { getCars } from './operations';
+import { getCars } from '../../../store/garage/operations';
 import { AppDispatch, RootState } from '../../../store/store';
 import { Pagination } from '../../../components/Pagination/Pagination';
 import { useCarForm } from './components/GarageControls/useCarForm';
-import { setPage } from './garageSlice';
+import { setPage } from '../../../store/garage/garageSlice';
 
 export function Garage() {
   const { items, currentPage } = useSelector(

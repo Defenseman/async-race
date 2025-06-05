@@ -3,11 +3,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../../components/Button/Button';
 import styles from './styles.module.scss';
-import { setPage } from '../../garageSlice';
-import { generateManyCars } from '../../operations';
+import { setPage } from '../../../../../store/garage/garageSlice';
+import { generateManyCars } from '../../../../../store/garage/operations';
 import { AppDispatch } from '../../../../../store/store';
 import { CreateCarForm } from './CreateCarForm/CreateCarForm';
-import { Item } from '../../types';
+import { Item } from '../../../../../store/garage/types';
 
 export function GarageControls({
   selectedCar,

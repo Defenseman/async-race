@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import garageReducer from '../pages/GaragePage/garage/garageSlice';
-import raceReducer from '../pages/GaragePage/race/raceSlice';
+import garageReducer from './garage/garageSlice';
+import raceReducer from './race/raceSlice';
 
 export const rootReducer = combineReducers({
   garage: garageReducer,

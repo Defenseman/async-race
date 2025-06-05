@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { startEngine, drive, stopEngine } from '../../../services/raceApi';
+import { startEngine, drive, stopEngine } from '../../services/raceApi';
 
 export const startCar = createAsyncThunk(
   '/race/startcar',

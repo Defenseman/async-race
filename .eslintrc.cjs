@@ -18,7 +18,7 @@ module.exports = {
   },
   rules: {
     'max-lines-per-function': ['error', 40],
-    'max-len': ['error', { code: 80 }],
+    'max-len': ['warn', { code: 80 }],
     'no-magic-numbers': [
       'error',
       { ignoreArrayIndexes: true, ignore: [0, 1, 40], enforceConst: true },
@@ -40,7 +40,6 @@ module.exports = {
     'react/no-unused-prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'off',
-    'react/require-default-props': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
   },
 };

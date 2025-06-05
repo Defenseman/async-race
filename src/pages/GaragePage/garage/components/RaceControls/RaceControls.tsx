@@ -5,9 +5,13 @@ import { useDispatch } from 'react-redux';
 import { Button } from '../../../../../components/Button/Button';
 import styles from './styles.module.scss';
 import { CarItem } from '../CarList/CarItem/CarItem';
-import { driveCar, startCar, stopCar } from '../../../race/operations';
+import {
+  driveCar,
+  startCar,
+  stopCar,
+} from '../../../../../store/race/operations';
 import { AppDispatch } from '../../../../../store/store';
-import { resetCarPosition } from '../../../race/raceSlice';
+import { resetCarPosition } from '../../../../../store/race/raceSlice';
 import { Modal } from '../../../../../components/Modal/Modal';
 import {
   createWinner,

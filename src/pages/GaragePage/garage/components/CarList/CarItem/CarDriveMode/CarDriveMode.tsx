@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../../../../components/Button/Button';
 import styles from './styles.module.scss';
-import { driveCar, startCar } from '../../../../../race/operations';
+import { driveCar, startCar } from '../../../../../../../store/race/operations';
 import { AppDispatch } from '../../../../../../../store/store';
 
 type CarDriveModeProps = {

@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import styles from './styles.module.scss';
 
 type ButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
   icon?: React.ReactNode;
   width?: string;
   disabled?: boolean;

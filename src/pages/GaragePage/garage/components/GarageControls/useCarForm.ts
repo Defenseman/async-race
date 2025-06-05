@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { CreateCarData, Item } from '../../types';
-import { updateCar } from '../../operations';
+import { CreateCarData, Item } from '../../../../../store/garage/types';
+import { updateCar } from '../../../../../store/garage/operations';
 import { AppDispatch } from '../../../../../store/store';
 
 const InitialCar: CreateCarData = {

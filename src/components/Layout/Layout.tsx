@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import styles from './styles.module.scss';
-import mainLogo from '../../assets/mainLogo.png';
+import mainLogo from '../../assets/carLogo.png';
 
 export function Layout() {
   return (
