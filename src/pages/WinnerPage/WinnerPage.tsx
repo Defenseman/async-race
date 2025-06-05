@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { WinnersHeader } from './components/WinnersHeader/WinnersHeader';
@@ -37,13 +38,17 @@ export function WinnerPage() {
 
   return (
     <div className={styles.winner}>
-      <WinnersHeader />
-      <WinnersList winners={visibleWinners} />
-      <Pagination
-        onPageChange={setPage}
-        totalPages={totalPages}
-        currentPage={page}
-      />
+      <div className={styles.winnersMain}>
+        <WinnersHeader />
+        <WinnersList winners={visibleWinners} />
+      </div>
+      <div style={{ marginTop: '10px' }}>
+        <Pagination
+          onPageChange={setPage}
+          totalPages={totalPages}
+          currentPage={page}
+        />
+      </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 
 type CarProps = {
@@ -6,6 +5,7 @@ type CarProps = {
   shouldDrive?: boolean;
   duration?: number;
   translateCar?: number;
+  carId?: number;
 };
 
 export function Car({

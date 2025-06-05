@@ -30,7 +30,6 @@ export function RaceControls({ cars }: RaceControlsProps) {
 
   const toRound = 1000;
   const [disabledRace, setDisabledRace] = useState(false);
-  const [disabledReset, setDisabledReset] = useState(true);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [winner, setWinner] = useState<{
@@ -41,7 +40,6 @@ export function RaceControls({ cars }: RaceControlsProps) {
 
   const handleRace = async () => {
     setDisabledRace(true);
-    setDisabledReset(false);
     const startTimes: Record<number, number> = {};
     const raceResults: { id: number; time: number; name: string }[] = [];
 
@@ -62,7 +60,6 @@ export function RaceControls({ cars }: RaceControlsProps) {
     );
 
     setDisabledRace(false);
-    setDisabledReset(false);
 
     if (raceResults.length) {
       const firstWinner = raceResults.reduce((acc, curr) => {
@@ -107,7 +104,7 @@ export function RaceControls({ cars }: RaceControlsProps) {
       <Button disabled={!!disabledRace} onClick={handleRace} width="90px">
         Race
       </Button>
-      <Button disabled={!!disabledReset} onClick={handleReset} width="90px">
+      <Button onClick={handleReset} width="90px">
         Reset
       </Button>
       <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>

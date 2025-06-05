@@ -1,5 +1,4 @@
 /* eslint-disable max-lines-per-function */
-/* eslint-disable no-magic-numbers */
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CarButtons } from './CarButtons/CarButtons';
@@ -28,6 +27,8 @@ export function CarItem({
   const [translateCar, setTranslateCar] = useState(0);
   const [startAnimation, setStartAnimation] = useState(false);
 
+  const toRound = 1000;
+
   const isRunning = useSelector(
     (state: RootState) => state.race.runningCar[car.id],
   );
@@ -40,7 +41,7 @@ export function CarItem({
   );
 
   const duration =
-    animationData && animationData.distance / animationData.velocity / 1000;
+    animationData && animationData.distance / animationData.velocity / toRound;
 
   const handleStopCar = () => {
     dispatch(stopCar(car.id));
@@ -75,7 +76,7 @@ export function CarItem({
 
   useEffect(() => {
     if (!isRunning && animationData && animationStartRef.current) {
-      const elapsed = (performance.now() - animationStartRef.current) / 1000;
+      const elapsed = (performance.now() - animationStartRef.current) / toRound;
       const distanceTravelled = animationData.velocity * elapsed;
 
       const containerWidth = containerRef.current?.offsetWidth || 0;
