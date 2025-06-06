@@ -1,28 +1,23 @@
-import { RefObject, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../../../store/store';
-import { clearResetFlag } from '../../../../../store/race/raceSlice';
+import { AppDispatch } from '../../../../../../../../store/store';
+import { clearResetFlag } from '../../../../../../../../store/race/raceSlice';
+import { useCarItemState } from '../state/useCarItemState';
 
 interface UseCarResetEffectProps {
   carId: number;
-  shouldReset: boolean;
-  setTranslateCar: (value: number) => void;
-  setStartAnimation: (value: boolean) => void;
-  setdisabledStart: (value: boolean) => void;
-  setdisabledStop: (value: boolean) => void;
-  animationStartRef: RefObject<number | null>;
+  state: ReturnType<typeof useCarItemState>;
 }
 
-export function useCarResetEffect(props: UseCarResetEffectProps) {
+export function useCarResetEffect({ carId, state }: UseCarResetEffectProps) {
   const {
-    carId,
     shouldReset,
     setTranslateCar,
     setStartAnimation,
     setdisabledStart,
     setdisabledStop,
     animationStartRef,
-  } = props;
+  } = state;
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
