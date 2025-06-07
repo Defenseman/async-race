@@ -21,7 +21,7 @@ module.exports = {
     'max-len': ['warn', { code: 80 }],
     'no-magic-numbers': [
       'error',
-      { ignoreArrayIndexes: true, ignore: [0, 1, 40], enforceConst: true },
+      { ignoreArrayIndexes: true, ignore: [0, 1, 2, 40], enforceConst: true },
     ],
     'no-param-reassign': [
       'error',

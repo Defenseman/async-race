@@ -1,4 +1,6 @@
 import { useEffect, RefObject } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCarPosition } from '../../../../../../../../store/race/raceSlice';
 
 interface IAnimationData {
   distance: number;
@@ -13,9 +15,11 @@ interface IUseCarStartEffectProps {
   setdisabledStop: (value: boolean) => void;
   setTranslateCar: (value: number) => void;
   setStartAnimation: (value: boolean) => void;
+  carId: number;
 }
 
 export function useCarStartEffect(props: IUseCarStartEffectProps): void {
+  const dispatch = useDispatch();
   const {
     animationData,
     containerRef,
@@ -24,6 +28,7 @@ export function useCarStartEffect(props: IUseCarStartEffectProps): void {
     setdisabledStop,
     setTranslateCar,
     setStartAnimation,
+    carId,
   } = props;
 
   useEffect(() => {
@@ -44,6 +49,7 @@ export function useCarStartEffect(props: IUseCarStartEffectProps): void {
       setdisabledStart(true);
       setdisabledStop(false);
       setTranslateCar(realTranslateCar);
+      dispatch(setCarPosition({ id: carId, position: realTranslateCar }));
       setStartAnimation(true);
     });
   }, [animationData]);

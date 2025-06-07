@@ -20,6 +20,7 @@ export function useCarItemLogic(car: Item) {
     disabledStop: state.disabledStop,
     duration: state.duration,
     isRunning: state.isRunning,
+    carId: state.carId,
     handleStartCar,
     handleStopCar,
   };

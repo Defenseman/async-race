@@ -22,6 +22,7 @@ export const useCarHandlers = (
   };
 
   const handleStartCar = () => {
+    if (state.disabledStart) return;
     dispatch(startCar(carId)).then(() => dispatch(driveCar(carId)));
   };
 

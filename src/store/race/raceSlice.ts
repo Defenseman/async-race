@@ -6,6 +6,7 @@ const initialState: RaceState = {
   runningCar: {},
   animationParams: {},
   shouldReset: {},
+  carPosition: {},
 };
 
 const raceSlice = createSlice({
@@ -17,6 +18,13 @@ const raceSlice = createSlice({
     },
     clearResetFlag: (state, action: PayloadAction<number>) => {
       delete state.shouldReset[action.payload];
+    },
+    setCarPosition: (
+      state,
+      action: PayloadAction<{ id: number; position: number }>,
+    ) => {
+      const { id, position } = action.payload;
+      state.carPosition[id] = position;
     },
   },
   extraReducers: builder => {
@@ -41,5 +49,6 @@ const raceSlice = createSlice({
   },
 });
 
-export const { resetCarPosition, clearResetFlag } = raceSlice.actions;
+export const { resetCarPosition, clearResetFlag, setCarPosition } =
+  raceSlice.actions;
 export default raceSlice.reducer;

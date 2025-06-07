@@ -1,4 +1,6 @@
 import { RefObject, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCarPosition } from '../../../../../../../../store/race/raceSlice';
 
 interface IAnimationData {
   distance: number;
@@ -12,6 +14,7 @@ interface IUseCarStopEffectProps {
   containerRef: RefObject<HTMLDivElement | null>;
   setStartAnimation: (value: boolean) => void;
   setTranslateCar: (value: number) => void;
+  carId: number;
 }
 
 export function useCarStopEffect(props: IUseCarStopEffectProps) {
@@ -22,7 +25,9 @@ export function useCarStopEffect(props: IUseCarStopEffectProps) {
     containerRef,
     setStartAnimation,
     setTranslateCar,
+    carId,
   } = props;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const toRound = 1000;
@@ -35,9 +40,14 @@ export function useCarStopEffect(props: IUseCarStopEffectProps) {
       const padding = 140;
       const maxDistance = containerWidth - carWidth - padding;
       const realTranslateCar = Math.min(animationData.distance, maxDistance);
-
       setStartAnimation(false);
       setTranslateCar(Math.min(distanceTravelled, realTranslateCar));
+      dispatch(
+        setCarPosition({
+          id: carId,
+          position: Math.min(distanceTravelled, realTranslateCar),
+        }),
+      );
     }
   }, [isRunning]);
 }

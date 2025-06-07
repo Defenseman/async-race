@@ -5,7 +5,6 @@ type CarProps = {
   shouldDrive?: boolean;
   duration?: number;
   translateCar?: number;
-  carId?: number;
 };
 
 export function Car({
