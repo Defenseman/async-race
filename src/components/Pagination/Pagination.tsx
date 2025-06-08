@@ -16,7 +16,7 @@ export function Pagination({
     <div className={styles.controls}>
       <Button
         onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-        disabled={currentPage === 1}
+        disabled={currentPage === 1 || currentPage > totalPages}
       >
         &lt;
       </Button>
@@ -25,7 +25,7 @@ export function Pagination({
       </span>
       <Button
         onClick={() => onPageChange(Math.max(currentPage + 1, 1))}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalPages || currentPage > totalPages}
       >
         &gt;
       </Button>

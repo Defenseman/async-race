@@ -9,9 +9,13 @@ type WinnerListProp = {
 export function WinnersList({ winners }: WinnerListProp) {
   return (
     <div className={styles.container}>
-      {winners.map(winner => {
-        return <WinnerRow key={winner.id} winner={winner} />;
-      })}
+      {winners.length > 0 ? (
+        winners.map(winner => {
+          return <WinnerRow key={winner.id} winner={winner} />;
+        })
+      ) : (
+        <h1 className={styles.noCarTitle}>There is no Cars</h1>
+      )}
     </div>
   );
 }
