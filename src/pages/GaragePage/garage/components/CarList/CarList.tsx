@@ -1,5 +1,6 @@
 import React from 'react';
 import { CarItem } from './CarItem/CarItem';
+import style from './styles.module.scss';
 
 type CarListItem = {
   name: string;
@@ -14,9 +15,17 @@ type CarListProps = {
 export function CarList({ cars, handleSelectedCar }: CarListProps) {
   return (
     <div>
-      {cars.map(car => (
-        <CarItem key={car.id} car={car} handleSelectedCar={handleSelectedCar} />
-      ))}
+      {cars.length < 0 ? (
+        cars.map(car => (
+          <CarItem
+            key={car.id}
+            car={car}
+            handleSelectedCar={handleSelectedCar}
+          />
+        ))
+      ) : (
+        <h1 className={style.noCarTitle}>There is no Cars</h1>
+      )}
     </div>
   );
 }

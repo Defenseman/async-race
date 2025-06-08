@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+# ASYNC RACE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deployed at - https://async-race-web-pp.netlify.app/ 
 
-Currently, two official plugins are available:
+### Final Score: 370 / 400
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Checklist
 
-## Expanding the ESLint configuration
+### UI Deployment
+✅ UI deployed on Vercel / Netlify / GitHub Pages / Cloudflare Pages
+✅ Requirements to Commits and Repository
+✅ Commits follow guidelines and have meaningful messages
+✅ Checklist included in README.md
+✅ Score calculated and included at top
+✅ UI deployment link added at top of README
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Basic Structure (80 / 80 pts)
+✅ Two Views: "Garage" and "Winners" — 10 pts
+✅ Garage View Content: (30 pts)
+  ✅View name
+  ✅Car creation/edit panel
+  ✅Race control panel
+  ✅Garage section 
+✅ Winners View Content: (10 pts)
+  ✅Name of view
+  ✅Winners table
+  ✅Pagination 
+✅ Persistent State (page, inputs, etc.) — 30 pts
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+### Garage View (80 / 90 pts)
+✅ Car creation / update / delete with validations — 20 pts
+✅ Color selection from RGB palette — 10 pts
+✅ Random car creation (100 at once, name + color) — 20 pts
+✅ Update / Delete buttons near each car — 10 pts
+✅ Pagination: 7 cars per page — 10 pts
+✅ Extra points: (10 / 20 pts)
+  ✅ Empty Garage Message
+  ❌ Go to previous page if last car deleted
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Winners View (40 / 50 pts)
+✅ Display winners after race — 15 pts
+✅ Pagination (10 per page) — 10 pts
+✅ Winners table with №, image, name, wins, best time — 15 pts
+❌ Sorting by wins and time (asc/desc) — 0 pts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+### Race (160 / 170 pts)
+✅ Start engine animation with request + error handling — 20 pts
+✅ Stop engine animation — 20 pts
+❌ Responsive animation (works from 500px and up) — 0 pts
+✅ Start race for all cars on current page — 10 pts
+✅ Reset race button (returns all cars to start) — 15 pts
+✅ Winner announcement (car name) — 5 pts
+✅ Button states updated (disable when should) — 20 pts
+✅ Actions during race (block or handle editing, deleting, switching pages/views) — 50 pts
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+### Prettier and ESLint Configuration (10 / 10 pts)
+✅ Prettier setup: format and ci:format scripts — 5 pts
+✅ ESLint with Airbnb + lint script + strict TS — 5 pts
+
+### Overall Code Quality (up to 100 pts, skipped in self-check)
+Skipped: Evaluated by reviewer
+  ⬜Modular Design
+  ⬜Function Modularization
+  ⬜Code Duplication and Magic Numbers
+  ⬜Readability
+  ⬜Extra features
+
+#### Tech Stack
+⚛️ React 18 + TypeScript
+🎯 Redux Toolkit
+🎨 SCSS Modules
+🚗 CSS animations
+📦 Vite
+☁️ Hosted on Netlify
+
+#### Scripts
+npm run dev        # start dev server
+npm run build      # build project
+npm run format     # format code with Prettier
+npm run lint       # run ESLint checks
+npm run preview    # starts a local server to preview the production build
+
+#### Commit Message Rules
+feat: Adding a new feature
+fix: Bug fix
+refactor: Refactoring
+docs: Code Formatting
