@@ -30,10 +30,21 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/vite.config.{js,ts,mjs,cjs}',
+          '**/*.config.{js,ts}',
+          '**/*.test.{js,ts,tsx}',
+          '**/test/**',
+        ],
+      },
+    ],
     'import/extensions': ['error', 'never'],
     'import/prefer-default-export': 'off',
     'react-hooks/exhaustive-deps': 'off',
-    'react/require-default-props': ['warn'],
+    'react/require-default-props': 'off',
     'react/button-has-type': 'off',
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],

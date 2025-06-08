@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Item } from '../../../../../../../../store/garage/types';
 import { RootState } from '../../../../../../../../store/store';
+// eslint-disable-next-line max-len
 import { useContainerWidthObserver } from '../effects/useContainerWidthObserver';
 
 const toRound = 1000;
