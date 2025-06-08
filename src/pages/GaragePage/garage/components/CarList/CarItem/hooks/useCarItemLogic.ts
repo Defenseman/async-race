@@ -21,6 +21,7 @@ export function useCarItemLogic(car: Item) {
     duration: state.duration,
     isRunning: state.isRunning,
     carId: state.carId,
+    containerWidth: state.containerWidth,
     handleStartCar,
     handleStopCar,
   };

@@ -31,7 +31,7 @@ export function RaceControls({ cars }: RaceControlsProps) {
       <Button onClick={resetRace} width="90px">
         Reset
       </Button>
-      <Modal isOpen={!!isOpenModal} onClose={() => setIsOpenModal(false)}>
+      <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <h2>Winner: {winner?.name}</h2>
         <h3>Time: {winner?.time.toFixed(2)}s</h3>
       </Modal>

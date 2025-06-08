@@ -20,7 +20,7 @@ export function Garage() {
     useCarForm();
   const dispatch = useDispatch<AppDispatch>();
 
-  const carsPerPage = 10;
+  const carsPerPage = 7;
   const totalPages = Math.ceil(items.length / carsPerPage);
 
   const visibleCars = items.slice(

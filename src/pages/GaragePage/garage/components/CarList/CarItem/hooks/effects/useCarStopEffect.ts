@@ -15,6 +15,7 @@ interface IUseCarStopEffectProps {
   setStartAnimation: (value: boolean) => void;
   setTranslateCar: (value: number) => void;
   carId: number;
+  containerWidth: number;
 }
 
 export function useCarStopEffect(props: IUseCarStopEffectProps) {
@@ -22,10 +23,10 @@ export function useCarStopEffect(props: IUseCarStopEffectProps) {
     isRunning,
     animationData,
     animationStartRef,
-    containerRef,
     setStartAnimation,
     setTranslateCar,
     carId,
+    containerWidth,
   } = props;
   const dispatch = useDispatch();
 
@@ -35,7 +36,6 @@ export function useCarStopEffect(props: IUseCarStopEffectProps) {
       const elapsed = (performance.now() - animationStartRef.current) / toRound;
       const distanceTravelled = animationData.velocity * elapsed;
 
-      const containerWidth = containerRef.current?.offsetWidth || 0;
       const carWidth = 120;
       const padding = 140;
       const maxDistance = containerWidth - carWidth - padding;
@@ -49,5 +49,5 @@ export function useCarStopEffect(props: IUseCarStopEffectProps) {
         }),
       );
     }
-  }, [isRunning]);
+  }, [isRunning, containerWidth]);
 }
