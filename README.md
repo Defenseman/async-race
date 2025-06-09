@@ -2,10 +2,9 @@
 
 ## Deployed at - https://async-race-web-pp.netlify.app/
 
-## Final Score: 
-**380 / 400**
+## Final Score: (**380** / **400**)
 
-## Checklist:
+## **Checklist**:
 
 ### UI Deployment
 
