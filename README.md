@@ -2,7 +2,8 @@
 
 ## Deployed at - https://async-race-web-pp.netlify.app/
 
-## Final Score: 380 / 400
+## Final Score: 
+**380 / 400**
 
 ## Checklist:
 
@@ -91,7 +92,7 @@ Skipped: Evaluated by reviewer
 
 #### Commit Message Rules
 
-- feat: Adding a new feature
-- fix: Bug fix
-- refactor: Refactoring
-- docs: Code Formatting
+- `feat:` Adding a new feature
+- `fix:` Bug fix
+- `refactor:` Refactoring
+- `docs:` Code Formatting
