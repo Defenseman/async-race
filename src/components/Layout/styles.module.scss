@@ -12,8 +12,9 @@
 
 .logo {
     img {
-        height: 300px;
-        width: 750px;
+        @media (max-width: 740px) {
+            width: 300px;
+        }
     }
 }
 

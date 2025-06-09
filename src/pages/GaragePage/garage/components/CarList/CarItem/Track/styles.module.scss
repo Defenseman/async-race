@@ -11,10 +11,15 @@
 .carName {
     margin: 0 0 0 140px;
     position: absolute;
-    top: 2px;
+    top: 10px;
     font-size: 50px;
     font-weight: 700;
     text-align: start;
+    
+    @media (max-width: 800px) {
+        font-size: 30px;
+        top: 25px;
+    }
 }
 
 .botomLine:last-child {

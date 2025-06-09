@@ -36,6 +36,7 @@ export function useRaceWinner() {
           wins: 1,
           time: winnerData.time,
         });
+        setIsOpenModal(true);
       }
     } catch (error) {
       console.error('Ошибка при обработке победителя:', error);

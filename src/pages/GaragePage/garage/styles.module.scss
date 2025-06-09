@@ -9,6 +9,12 @@
   display: grid;
   grid-template-columns: 2fr 8fr;
   margin-bottom: 20px;
+
+  @media (max-width: 1150px) {
+  // grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+}
 }
 
 .pagination {

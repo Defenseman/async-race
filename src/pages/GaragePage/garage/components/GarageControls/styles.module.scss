@@ -1,6 +1,12 @@
 .container {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 1150px) {
+      flex-direction: column;
+      width: 310px;
+      row-gap: 5px;
+    }
 }
 
 .wrapper {
@@ -19,7 +25,6 @@
 }
 
 .inputColor, .disabledColorInput {
-    height: 80%;
     width: 30px;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
