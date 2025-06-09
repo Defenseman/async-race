@@ -15,7 +15,7 @@ type CarListProps = {
 export function CarList({ cars, handleSelectedCar }: CarListProps) {
   return (
     <div>
-      {cars.length < 0 ? (
+      {cars.length > 0 ? (
         cars.map(car => (
           <CarItem
             key={car.id}
