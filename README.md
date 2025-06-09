@@ -84,11 +84,11 @@ Skipped: Evaluated by reviewer
 
 #### Scripts
 
-- npm run dev # start dev server
-- npm run build # build project
-- npm run format # format code with Prettier
-- npm run lint # run ESLint checks
-- npm run preview # starts a local server to preview the production build
+npm run dev       # start dev server
+npm run build     # build project
+npm run format    # format code with Prettier
+npm run lint      # run ESLint checks
+npm run preview   # starts a local server to preview the production build
 
 #### Commit Message Rules
 
