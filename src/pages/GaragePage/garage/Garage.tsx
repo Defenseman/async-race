@@ -29,6 +29,12 @@ export function Garage() {
   );
 
   useEffect(() => {
+    if (visibleCars.length === 0) {
+      dispatch(setPage(currentPage - 1));
+    }
+  }, [visibleCars]);
+
+  useEffect(() => {
     dispatch(getCars());
   }, [dispatch]);
 

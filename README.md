@@ -2,9 +2,9 @@
 
 ## Deployed at - https://async-race-web-pp.netlify.app/
 
-## Final Score: (**380** / **400**)
+## Final Score: (390 / 400)
 
-## **Checklist**:
+## Checklist:
 
 ### UI Deployment
 
@@ -29,16 +29,16 @@
 - ✅Pagination
 - ✅ Persistent State (page, inputs, etc.) — 30 pts
 
-### Garage View (80 / 90 pts)
+### Garage View (90 / 90 pts)
 
 - ✅ Car creation / update / delete with validations — 20 pts
 - ✅ Color selection from RGB palette — 10 pts
 - ✅ Random car creation (100 at once, name + color) — 20 pts
 - ✅ Update / Delete buttons near each car — 10 pts
 - ✅ Pagination: 7 cars per page — 10 pts
-- ✅ Extra points: (10 / 20 pts)
-- ✅ Empty Garage Message
-- ❌ Go to previous page if last car deleted
+- ✅ Extra points: (20 / 20 pts)
+- ✅ Empty Garage Message — 10 pts
+- ✅ Go to previous page if last car deleted — 10 pts
 
 ### Winners View (40 / 50 pts)
 
