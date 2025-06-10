@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 
 interface TrackProps {
@@ -6,9 +5,13 @@ interface TrackProps {
 }
 
 export function Track({ name }: TrackProps) {
+  const [brand] = name.split(' ');
   return (
     <div className={styles.container}>
-      <h1 className={styles.carName}>{name}</h1>
+      <h1 className={styles.carName}>
+        <span className={styles.full}>{name}</span>
+        <span className={styles.short}>{brand}</span>
+      </h1>
       <div className={styles.botomLine} />
     </div>
   );

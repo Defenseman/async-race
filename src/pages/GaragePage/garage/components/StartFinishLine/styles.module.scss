@@ -6,6 +6,10 @@
     width: 15px;
     z-index: 2;
     background-color: white;
+
+    @media (max-width: 700px) {
+        left: 210px;
+    }
 }
 .finishLine {
     position: absolute;

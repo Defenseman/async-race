@@ -1,45 +1,23 @@
-/* eslint-disable max-lines-per-function */
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { GarageControls } from './components/GarageControls/GarageControls';
 import { RaceControls } from './components/RaceControls/RaceControls';
 import { CarList } from './components/CarList/CarList';
 import styles from './styles.module.scss';
 import { StartFinishLine } from './components/StartFinishLine/StartFinishLine';
-import { getCars } from '../../../store/garage/operations';
-import { AppDispatch, RootState } from '../../../store/store';
 import { Pagination } from '../../../components/Pagination/Pagination';
-import { useCarForm } from './components/GarageControls/useCarForm';
-import { setPage } from '../../../store/garage/garageSlice';
+import { useGarage } from './hooks/useGarage';
 
 export function Garage() {
-  const { items, currentPage } = useSelector(
-    (state: RootState) => state.garage,
-  );
-  const { handleSelectedCar, selectedCar, setSelectedCar, handleUpdateCar } =
-    useCarForm();
-  const dispatch = useDispatch<AppDispatch>();
-
-  const carsPerPage = 7;
-  const totalPages = Math.ceil(items.length / carsPerPage);
-
-  const visibleCars = items.slice(
-    (currentPage - 1) * carsPerPage,
-    currentPage * carsPerPage,
-  );
-
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * carsPerPage;
-    const currentPageCars = items.slice(startIndex, startIndex + carsPerPage);
-
-    if (items.length > 0 && currentPage > 1 && currentPageCars.length === 0) {
-      dispatch(setPage(currentPage - 1));
-    }
-  }, [items.length, currentPage, dispatch]);
-
-  useEffect(() => {
-    dispatch(getCars());
-  }, [dispatch]);
+  const {
+    currentPage,
+    handleSelectedCar,
+    handleUpdateCar,
+    items,
+    selectedCar,
+    setSelectedCar,
+    totalPages,
+    visibleCars,
+    setPage,
+  } = useGarage();
 
   return (
     <>
@@ -60,7 +38,7 @@ export function Garage() {
       <div className={styles.pagination}>
         <h1 className={styles.carsCount}>Garage ({items.length})</h1>
         <Pagination
-          onPageChange={page => dispatch(setPage(page))}
+          onPageChange={setPage}
           currentPage={currentPage}
           totalPages={totalPages}
         />

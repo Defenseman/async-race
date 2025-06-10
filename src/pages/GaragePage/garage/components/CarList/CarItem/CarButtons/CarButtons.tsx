@@ -21,8 +21,14 @@ export function CarButtons({
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <Button onClick={() => handleSelectedCar(carData)}>Select</Button>
-        <Button onClick={() => handleDeleteCar()}>Remove</Button>
+        <Button onClick={() => handleSelectedCar(carData)}>
+          <span className={styles.full}>Select</span>
+          <span className={styles.short}>S</span>
+        </Button>
+        <Button onClick={() => handleDeleteCar()}>
+          <span className={styles.full}>Remove</span>
+          <span className={styles.short}>R</span>
+        </Button>
       </div>
     </div>
   );

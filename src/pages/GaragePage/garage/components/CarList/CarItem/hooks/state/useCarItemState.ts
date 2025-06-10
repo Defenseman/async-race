@@ -1,24 +1,19 @@
-/* eslint-disable max-lines-per-function */
 import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Item } from '../../../../../../../../store/garage/types';
 import { RootState } from '../../../../../../../../store/store';
-// eslint-disable-next-line max-len
 import { useContainerWidthObserver } from '../effects/useContainerWidthObserver';
 
 const toRound = 1000;
 
 export function useCarItemState(car: Item) {
-  const position = useSelector(
-    (state: RootState) => state.race.carPosition[car.id] ?? 0,
-  );
   const containerRef = useRef<HTMLDivElement>(null);
   const containerWidth = useContainerWidthObserver(containerRef);
   const animationStartRef = useRef<number | null>(null);
   const carId = car.id;
   const [disabledStart, setdisabledStart] = useState(false);
   const [disabledStop, setdisabledStop] = useState(true);
-  const [translateCar, setTranslateCar] = useState(position);
+  const [translateCar, setTranslateCar] = useState(0);
   const [startAnimation, setStartAnimation] = useState(false);
   const isRunning = useSelector(
     (state: RootState) => state.race.runningCar[car.id],
