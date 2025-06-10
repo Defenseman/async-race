@@ -29,10 +29,13 @@ export function Garage() {
   );
 
   useEffect(() => {
-    if (visibleCars.length === 0) {
+    const startIndex = (currentPage - 1) * carsPerPage;
+    const currentPageCars = items.slice(startIndex, startIndex + carsPerPage);
+
+    if (items.length > 0 && currentPage > 1 && currentPageCars.length === 0) {
       dispatch(setPage(currentPage - 1));
     }
-  }, [visibleCars]);
+  }, [items.length, currentPage, dispatch]);
 
   useEffect(() => {
     dispatch(getCars());
